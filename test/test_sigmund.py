@@ -91,5 +91,23 @@ class TestSigmund(unittest.TestCase):
 
 		self.assertEqual(ref_value, calculated_value)
 
+	def test_alpha_apos_1(self):
+		atomic_mass_incident_particle = 1
+		atomic_mass_target = 1
+		ref_value = 0.15 + 0.13
+
+		calculated_value = sigmund.alpha_apos(atomic_mass_incident_particle, atomic_mass_target)
+
+		self.assertEqual(ref_value, calculated_value)
+
+	def test_alpha_apos_2(self):
+		atomic_mass_incident_particle = 2
+		atomic_mass_target = 12
+		ref_value = 0.15 + 0.13*6
+
+		calculated_value = sigmund.alpha_apos(atomic_mass_incident_particle, atomic_mass_target)
+
+		self.assertEqual(ref_value, calculated_value)
+
 if __name__ == '__main__':
 	unittest.main()

@@ -146,7 +146,7 @@ def alpha_apos(atomic_mass_incident_particle, atomic_mass_target):
     	The return value is unitless [-]
 
 	"""
-	pass 0.15 + 0.13*atomic_mass_target/atomic_mass_incident_particle
+	return 0.15 + 0.13*atomic_mass_target/atomic_mass_incident_particle
 
 __author__ = "Leo Basov"
 __copyright__ = "Copyright (C) 2019, Leo Basov"
