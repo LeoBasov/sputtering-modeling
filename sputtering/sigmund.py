@@ -274,6 +274,25 @@ def reduced_energy(lindhard_screening_length, atomic_number_incident_particle, a
 	"""
 	return reduced_energy_factor(lindhard_screening_length, atomic_number_incident_particle, atomic_number_target, atomic_mass_incident_particle, atomic_mass_target)*incident_energy
 
+def thomas_fermi_screening(reduced_energy):
+	"""Thomas-Fermi screening
+
+	Parameters
+	----------
+	reduced_energy : double
+		Value is unitless [-]
+
+	Returns
+	-------
+	double
+    	The return value is unitless [-]
+
+	"""
+	numerator = 3.441*math.sqrt(reduced_energy)*math.log(reduced_energy + 2.718)
+	denumerator = 1.0 + 6.355*math.sqrt(reduced_energy) + reduced_energy*(6.881*math.sqrt(reduced_energy) - 1.708)
+
+	return numerator/denumerator
+
 __author__ = "Leo Basov"
 __copyright__ = "Copyright (C) 2019, Leo Basov"
 __license__ = "GPLv3"

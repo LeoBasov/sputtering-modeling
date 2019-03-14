@@ -159,5 +159,13 @@ class TestSigmund(unittest.TestCase):
 
 		self.assertEqual(ref_value, calculated_value)
 
+	def test_thomas_fermi_screening_1(self):
+		reduced_energy = 1
+		ref_value = 3.441*math.log(3.718)/(1.0 + 6.355 + (6.882 - 1.708))
+
+		calculated_value = sigmund.thomas_fermi_screening(reduced_energy)
+
+		self.assertAlmostEqual(ref_value, calculated_value, 4)
+
 if __name__ == '__main__':
 	unittest.main()
