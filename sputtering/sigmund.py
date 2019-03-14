@@ -96,7 +96,7 @@ def total_yield_low_energy(alpha_apos, surface_binding_energy, atomic_mass_incid
 		Atomic pass of the target provided in [amu]
 
 	incident_energy : double
-		Energy for for the incident particle provided in [eV]
+		Energy of the incident particle provided in [eV]
 
 	Returns
 	-------
@@ -211,6 +211,68 @@ def nuclear_cross_section(lindhard_screening_length, atomic_number_incident_part
 
 	"""
 	return nuclear_cross_section_factor(lindhard_screening_length, atomic_number_incident_particle, atomic_number_target, atomic_mass_incident_particle, atomic_mass_target)*thomas_fermi_screening
+
+def reduced_energy_factor(lindhard_screening_length, atomic_number_incident_particle, atomic_number_target, atomic_mass_incident_particle, atomic_mass_target):
+	"""Reduced energy factor
+
+	Parameters
+	----------
+	lindhard_screening_length : double
+		Value provided in [Å]
+
+	atomic_number_incident_particle : double
+		Atomic number of the incident particle [-]
+
+	atomic_number_target : double
+		Atomic number of the target [-]
+
+	atomic_mass_incident_particle : double
+		Atomic pass of the incident particle provided in [amu]
+
+	atomic_mass_target : double
+		Atomic pass of the target provided in [amu]
+
+	Returns
+	-------
+	double
+    	The return value is of unit [1/eV]
+
+	"""
+	factor_1 = atomic_mass_target/(atomic_mass_incident_particle + atomic_mass_target)
+	factor_2 = lindhard_screening_length/(atomic_number_incident_particle*atomic_number_target*E_SQUARED)
+
+	return factor_1*factor_2
+
+def reduced_energy(lindhard_screening_length, atomic_number_incident_particle, atomic_number_target, atomic_mass_incident_particle, atomic_mass_target, incident_energy):
+	"""Reduced energy
+
+	Parameters
+	----------
+	lindhard_screening_length : double
+		Value provided in [Å]
+
+	atomic_number_incident_particle : double
+		Atomic number of the incident particle [-]
+
+	atomic_number_target : double
+		Atomic number of the target [-]
+
+	atomic_mass_incident_particle : double
+		Atomic pass of the incident particle provided in [amu]
+
+	atomic_mass_target : double
+		Atomic pass of the target provided in [amu]
+
+	incident_energy : double
+		Energy of the incident particle provided in [eV]
+
+	Returns
+	-------
+	double
+    	The return value is unitless [-]
+
+	"""
+	return reduced_energy_factor(lindhard_screening_length, atomic_number_incident_particle, atomic_number_target, atomic_mass_incident_particle, atomic_mass_target)*incident_energy
 
 __author__ = "Leo Basov"
 __copyright__ = "Copyright (C) 2019, Leo Basov"
