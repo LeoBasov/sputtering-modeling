@@ -82,5 +82,14 @@ class TestSigmund(unittest.TestCase):
 
 		self.assertEqual(ref_value, calculated_value)
 
+	def test_lindhard_screening_length_1(self):
+		atomic_number_incident_particle = 1
+		atomic_number_target = 1
+		ref_value = 0.468/math.sqrt(2)
+
+		calculated_value = sigmund.lindhard_screening_length(atomic_number_incident_particle, atomic_number_target)
+
+		self.assertEqual(ref_value, calculated_value)
+
 if __name__ == '__main__':
 	unittest.main()
