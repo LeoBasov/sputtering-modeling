@@ -59,7 +59,7 @@ def total_yield_low_energy_factor(alpha_apos, surface_binding_energy, atomic_mas
     	The return value a factor for the total yield
 
 	"""
-	factor_1 = 3/math.pi
+	factor_1 = 3.0/(math.pi*math.pi)
 	factor_2 = alpha_apos/surface_binding_energy
 	factor_3 = atomic_mass_incident_particle*atomic_mass_target/math.pow(atomic_mass_incident_particle + atomic_mass_target, 2)
 
