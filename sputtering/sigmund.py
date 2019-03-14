@@ -177,7 +177,7 @@ def nuclear_cross_section_factor(lindhard_screening_length, atomic_number_incide
     	The return value is unitless [-]
 
 	"""
-	return 4.0*math.pi*atomic_number_incident_particle*atomic_number_target*E_SQUARED*atomic_mass_incident_particle*(atomic_mass_incident_particle + atomic_mass_target)
+	return 4.0*math.pi*atomic_number_incident_particle*atomic_number_target*E_SQUARED*atomic_mass_incident_particle/(atomic_mass_incident_particle + atomic_mass_target)
 
 def nuclear_cross_section(lindhard_screening_length, atomic_number_incident_particle, atomic_number_target, atomic_mass_incident_particle, atomic_mass_target, thomas_fermi_screening):
 	"""Nuclear cross section as introduced by Thomas-Fermi for high energies, reduced_energy > 1
