@@ -1,5 +1,10 @@
 """This is the base module containing the Sigmund Total Yield Formula and all associated functions
 
+Unless otherwise specified the following units are usded in this module:
+
+Length  : [Å]
+Enerngy : [eV]
+
 """
 
 import math
@@ -102,8 +107,8 @@ def total_yield_low_energy(alpha_apos, surface_binding_energy, atomic_mass_incid
 	"""
 	return total_yield_low_energy_factor(alpha_apos, surface_binding_energy, atomic_mass_incident_particle, atomic_mass_target)*incident_energy
 
-def a_i(atomic_number_incident_particle, atomic_number_target):
-	"""Sigmunds paramter for use in calculation of reduced energy
+def lindhard_screening_length(atomic_number_incident_particle, atomic_number_target):
+	"""Lindhard_screening_length
 
 	Parameters
 	----------
