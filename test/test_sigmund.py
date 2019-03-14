@@ -109,5 +109,30 @@ class TestSigmund(unittest.TestCase):
 
 		self.assertEqual(ref_value, calculated_value)
 
+	def test_nuclear_cross_section_factor_1(self):
+		lindhard_screening_length = 1
+		atomic_number_incident_particle = 1
+		atomic_number_target = 1
+		atomic_mass_incident_particle = 1
+		atomic_mass_target = 1
+		ref_value = 14.4*4*math.pi/(atomic_mass_incident_particle + atomic_mass_target)
+
+		calculated_value = sigmund.nuclear_cross_section_factor(lindhard_screening_length, atomic_number_incident_particle, atomic_number_target, atomic_mass_incident_particle, atomic_mass_target)
+
+		self.assertEqual(ref_value, calculated_value)
+
+	def test_nuclear_cross_section_1(self):
+		lindhard_screening_length = 1
+		atomic_number_incident_particle = 1
+		atomic_number_target = 1
+		atomic_mass_incident_particle = 1
+		atomic_mass_target = 1
+		thomas_fermi_screening = 9.3
+		ref_value = 14.4*4*math.pi*thomas_fermi_screening/(atomic_mass_incident_particle + atomic_mass_target)
+
+		calculated_value = sigmund.nuclear_cross_section(lindhard_screening_length, atomic_number_incident_particle, atomic_number_target, atomic_mass_incident_particle, atomic_mass_target, thomas_fermi_screening)
+
+		self.assertEqual(ref_value, calculated_value)
+
 if __name__ == '__main__':
 	unittest.main()
