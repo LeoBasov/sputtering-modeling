@@ -102,6 +102,28 @@ def total_yield_low_energy(alpha_apos, surface_binding_energy, atomic_mass_incid
 	"""
 	return total_yield_low_energy_factor(alpha_apos, surface_binding_energy, atomic_mass_incident_particle, atomic_mass_target)*incident_energy
 
+def a_i(atomic_number_incident_particle, atomic_number_target):
+	"""Sigmunds paramter for use in calculation of reduced energy
+
+	Parameters
+	----------
+	atomic_number_incident_particle : double
+		Atomic number of the incident particle [-]
+
+	atomic_number_target : double
+		Atomic number of the target [-]
+
+	Returns
+	-------
+	double
+    	Ther return value is in unit [Å]
+
+	"""
+	z_1 = math.pow(atomic_number_incident_particle, 2.0/3.0)
+	z_2 = math.pow(atomic_number_target, 2.0/3.0)
+
+	return 0.468/math.sqrt(z_1 + z_2)
+
 __author__ = "Leo Basov"
 __copyright__ = "Copyright (C) 2019, Leo Basov"
 __license__ = "GPLv3"
