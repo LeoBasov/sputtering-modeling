@@ -134,5 +134,30 @@ class TestSigmund(unittest.TestCase):
 
 		self.assertEqual(ref_value, calculated_value)
 
+	def test_reduced_energy_factor_1(self):
+		lindhard_screening_length = 1
+		atomic_number_incident_particle = 1
+		atomic_number_target = 1
+		atomic_mass_incident_particle = 1
+		atomic_mass_target = 1
+		ref_value = 1/(sigmund.E_SQUARED*2)
+
+		calculated_value = sigmund.reduced_energy_factor(lindhard_screening_length, atomic_number_incident_particle, atomic_number_target, atomic_mass_incident_particle, atomic_mass_target)
+
+		self.assertEqual(ref_value, calculated_value)
+
+	def test_reduced_energy_1(self):
+		lindhard_screening_length = 1
+		atomic_number_incident_particle = 1
+		atomic_number_target = 1
+		atomic_mass_incident_particle = 1
+		atomic_mass_target = 1
+		incidend_energy = 261.1
+		ref_value = incidend_energy/(sigmund.E_SQUARED*2)
+
+		calculated_value = sigmund.reduced_energy(lindhard_screening_length, atomic_number_incident_particle, atomic_number_target, atomic_mass_incident_particle, atomic_mass_target, incidend_energy)
+
+		self.assertEqual(ref_value, calculated_value)
+
 if __name__ == '__main__':
 	unittest.main()
