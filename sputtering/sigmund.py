@@ -4,6 +4,7 @@ Unless otherwise specified the following units are usded in this module:
 
 Length  : [Å]
 Enerngy : [eV]
+Mass  : [amu]
 
 """
 
@@ -147,6 +148,69 @@ def alpha_apos(atomic_mass_incident_particle, atomic_mass_target):
 
 	"""
 	return 0.15 + 0.13*atomic_mass_target/atomic_mass_incident_particle
+
+def nuclear_cross_section_factor(lindhard_screening_length, atomic_number_incident_particle, atomic_number_target, atomic_mass_incident_particle, atomic_mass_target):
+	"""Energy indepentand factor of the nuclear cross section as introduced by Thomas-Fermi, reduced_energy > 1
+
+	lindhard_screening_length
+
+	Parameters
+	----------
+	lindhard_screening_length : double
+		Value provided in [Å]
+
+	atomic_number_incident_particle : double
+		Atomic number of the incident particle [-]
+
+	atomic_number_target : double
+		Atomic number of the target [-]
+
+	atomic_mass_incident_particle : double
+		Atomic pass of the incident particle provided in [amu]
+
+	atomic_mass_target : double
+		Atomic pass of the target provided in [amu]
+
+	Returns
+	-------
+	double
+    	The return value is unitless [-]
+
+	"""
+	return 4.0*math.pi*atomic_number_incident_particle*atomic_number_target*E_SQUARED*atomic_mass_incident_particle*(atomic_mass_incident_particle + atomic_mass_target)
+
+def nuclear_cross_section(lindhard_screening_length, atomic_number_incident_particle, atomic_number_target, atomic_mass_incident_particle, atomic_mass_target, thomas_fermi_screening):
+	"""Nuclear cross section as introduced by Thomas-Fermi for high energies, reduced_energy > 1
+
+	lindhard_screening_length
+
+	Parameters
+	----------
+	lindhard_screening_length : double
+		Value provided in [Å]
+
+	atomic_number_incident_particle : double
+		Atomic number of the incident particle [-]
+
+	atomic_number_target : double
+		Atomic number of the target [-]
+
+	atomic_mass_incident_particle : double
+		Atomic pass of the incident particle provided in [amu]
+
+	atomic_mass_target : double
+		Atomic pass of the target provided in [amu]
+
+	thomas_fermi_screening : double
+		The value is unitless [-]
+
+	Returns
+	-------
+	double
+    	The return value is unitless [-]
+
+	"""
+	return nuclear_cross_section_factor(lindhard_screening_length, atomic_number_incident_particle, atomic_number_target, atomic_mass_incident_particle, atomic_mass_target)*thomas_fermi_screening
 
 __author__ = "Leo Basov"
 __copyright__ = "Copyright (C) 2019, Leo Basov"
