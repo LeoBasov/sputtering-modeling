@@ -4,13 +4,18 @@
 
 import math
 
+E_SQUARED = 14.4
+"""double: Squared elemenatal charge. Provided in [eV Å].
+
+"""
+
 def total_yield_high_energy(alpha_apos, nuclear_cross_section, surface_binding_energy):
 	"""Sigmunds total yield formula for E > 1 keV
 
 	This function calculates the total yield for incidend energies > 1 keV.
 
 	Parameters
-    ----------
+	----------
 	alpha_apos : double
 		Parameter calculated by function...
 
@@ -23,8 +28,8 @@ def total_yield_high_energy(alpha_apos, nuclear_cross_section, surface_binding_e
 		It is a tabular value specific for the target.
 
 	Returns
-    -------
-    double
+	-------
+	double
     	The return value is the total yield per incident particle.
 
     	Ther yield is normaly provided in unit [atoms/incident ion]
@@ -39,7 +44,7 @@ def total_yield_low_energy_factor(alpha_apos, surface_binding_energy, atomic_mas
 	The fator needs to be multiplied with the energy of the incident particle to calculate the total yield.
 
 	Parameters
-    ----------
+	----------
 	alpha_apos : double
 		Parameter calculated by function...
 
@@ -54,8 +59,8 @@ def total_yield_low_energy_factor(alpha_apos, surface_binding_energy, atomic_mas
 
 
 	Returns
-    -------
-    double
+	-------
+	double
     	The return value a factor for the total yield
 
 	"""
@@ -71,7 +76,7 @@ def total_yield_low_energy(alpha_apos, surface_binding_energy, atomic_mass_incid
 	This function calculates the total yield for incidend energies (E) > 1 keV and E > 10*surface_binding_energy.
 
 	Parameters
-    ----------
+	----------
 	alpha_apos : double
 		Parameter calculated by function...
 
@@ -88,8 +93,8 @@ def total_yield_low_energy(alpha_apos, surface_binding_energy, atomic_mass_incid
 		Energy for for the incident particle provided in [eV]
 
 	Returns
-    -------
-    double
+	-------
+	double
     	The return value is the total yield per incident particle.
 
     	Ther yield is normaly provided in unit [atoms/incident ion]
