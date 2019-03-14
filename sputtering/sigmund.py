@@ -102,7 +102,7 @@ def total_yield_low_energy(alpha_apos, surface_binding_energy, atomic_mass_incid
 	double
     	The return value is the total yield per incident particle.
 
-    	Ther yield is normaly provided in unit [atoms/incident ion]
+    	The yield is normaly provided in unit [atoms/incident ion]
 
 	"""
 	return total_yield_low_energy_factor(alpha_apos, surface_binding_energy, atomic_mass_incident_particle, atomic_mass_target)*incident_energy
@@ -121,13 +121,32 @@ def lindhard_screening_length(atomic_number_incident_particle, atomic_number_tar
 	Returns
 	-------
 	double
-    	Ther return value is in unit [Å]
+    	The return value is in unit [Å]
 
 	"""
 	z_1 = math.pow(atomic_number_incident_particle, 2.0/3.0)
 	z_2 = math.pow(atomic_number_target, 2.0/3.0)
 
 	return 0.468/math.sqrt(z_1 + z_2)
+
+def alpha_apos(atomic_mass_incident_particle, atomic_mass_target):
+	"""Parameter used my sigmund to calculate total yield
+
+	Parameters
+	----------
+	atomic_mass_incident_particle : double
+		Atomic pass of the incident particle provided in [amu]
+
+	atomic_mass_target : double
+		Atomic pass of the target provided in [amu]
+
+	Returns
+	-------
+	double
+    	The return value is unitless [-]
+
+	"""
+	pass 0.15 + 0.13*atomic_mass_target/atomic_mass_incident_particle
 
 __author__ = "Leo Basov"
 __copyright__ = "Copyright (C) 2019, Leo Basov"
